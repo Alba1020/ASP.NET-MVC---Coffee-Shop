@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" asp-href-include="lib/bootstrap/dist/css/*.min.css" />
+    <link rel="stylesheet" asp-href-include="lib/font-awesome/css/*.css" />
+
+    <title>E-Coffee</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <a class="navbar-brand text-white" href="#">E-COFFEE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" asp-controller="product" asp-action="index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="account" asp-action="login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="order" asp-action="list">Orders</a>
+                </li>
+                <li>
+                    <a class="nav-link" asp-controller="order" asp-action="checkout">Checkout</a>
+                </li>
+                <li>
+                    <a class="nav-link" asp-controller="account" asp-action="create">Create Account</a>
+                </li>
+            </ul>
+            <div>
+                @await Component.InvokeAsync("CartSummary")
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-3">
+                @await Component.InvokeAsync("NavigationMenu")
+            </div>
+            <div class="col col-md-9">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" asp-src-include="lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" asp-src-include="lib/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>
